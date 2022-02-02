@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">                 <!-- webpack remove -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>        <!-- webpack remove -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700& display=swap" rel="stylesheet"> <!-- webpack remove -->
-    <link rel="stylesheet" href="./css/style.css">                              <!-- webpack remove -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <title>Automated parcel machine</title>
 </head>
 
@@ -20,10 +17,32 @@
             <p class="apm-header__info">Rozpocznij klikając w przycisk</p>
         </header>
         <section class="apm-form">
-           
+            <form class="form">
+                <div class="form-fields not-active" isActive=false>
+                    <div class="box"> 
+                        <label class="form-label">Numer telefonu</label>
+                        <input class="form-value" name="phone"/>
+                    </div>
+                    <div class="box">
+                        <label class="form-label">Kod odbioru</label>
+                        <input class="form-value" name="code"/>
+                    </div>
+                </div>
+                <div>
+                    <input class="btn" type="submit" value="Odbierz paczkę" name="get-pack"/>
+                </div>
+            </form>
         </section>
         <div class="modal not-active">
-            
+            <section class="apm-final">
+                <h2 class="apm-final__title">Paczka odebrana!</h2>
+                <p class="apm-final__info">Zrobiłeś to wczasie <span></span>sekund!</p>
+                <p class="apm-final__info">Czy mozemy zrobić dla Ciebie coś jeszcze?</p>
+                <div class="button-box">
+                    <button class="apm-final__btn btn" name="finish">To wszystko na dziś</button>   
+                    <button class="apm-final__btn btn" name="next">Odbierz kolejną paczkę</button>
+                </div>
+            </section>
         </div>
     </div>
 
