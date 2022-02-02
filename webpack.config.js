@@ -3,33 +3,47 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // importuję odpowiedni plugin
 module.exports = {
-    entry: `./src/js/script.js`,
-    // definiuje plik wejściowy
+    entry: ['whatwg-fetch', './src/js/script.js'],
+    // definiuje pliki wejściowe
+    // posiadające swoje identyfikatory [chunks]
     output: {
         path: path.resolve(__dirname, 'build'),
         // definiuje ścieżką wyjściową
-        filename: 'script.min.js',
+        filename: '[name].min.js',
         // definiuję nazwę pliku wyjściowego
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [{
-            test: /\.js$/,
-            // określam jakie pliki 
-            // będą brane pod uwagę
-            exclude: /node_modules/,
-            // określam wykluczenia
-            use: 'babel-loader',
-            // określam jaki [loader]
-            // ma być wykorzystany
-        }]
-        // obecnie brak dodatkowych ustawień
+                test: /\.js$/,
+                // określam jakie pliki 
+                // będą brane pod uwagę
+                exclude: /node_modules/,
+                // określam wykluczenia
+                use: 'babel-loader',
+                // określam jaki [loader]
+                // ma być wykorzystany
+            },
+            {
+                test: /\.css$/,
+                // określam jakie pliki 
+                // będą brane pod uwagę
+                exclude: /node_modules/,
+                // określam wykluczenia
+                use: ['style-loader', 'css-loader'],
+                // określam jaki [loader]
+                // ma być wykorzystany
+            }
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: `./src/index.html`,
+            template: './src/index.html',
             // wskazuje plik źródłowy
-            filename: 'index.html'
+            filename: 'index.html',
             // określan nazwę dla pliku
+            chunks: ['script'],
+            // wskazuje plik do podpięcia
         })
     ]
 }
