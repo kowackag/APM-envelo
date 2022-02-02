@@ -25,7 +25,7 @@ module.exports = {
                 // ma być wykorzystany
             },
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 // określam jakie pliki 
                 // będą brane pod uwagę
                 exclude: /node_modules/,
@@ -42,8 +42,6 @@ module.exports = {
             // wskazuje plik źródłowy
             filename: 'index.html',
             // określan nazwę dla pliku
-            chunks: ['script'],
-            // wskazuje plik do podpięcia
         })
     ]
 }
