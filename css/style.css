@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --colorBgc: rgb(243, 248, 254);
+    --colorShadowDark: rgb(215 224 234);
+    --colorShadowLight: rgb(251, 253, 255);
+    --colorFont: rgb(25, 7, 136);
+    --colorContrast: rgb(216, 27, 110);
+    --colorTransp: rgba(243, 248, 254, 0.5)
+}
+
 html {
     font-size: 10px;
 }
@@ -16,4 +25,120 @@ body {
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
     line-height:1.5;
+}
+
+
+.container {
+    position: relative;
+    padding: 6rem;
+    min-width: 530px;
+    min-height: 380px;
+    box-shadow: 0px 0px 20px var(--colorShadowDark);
+    background-color: var(--colorBgc);
+    color: var(--colorFont);
+}
+
+.apm-header__title, .apm-header__info {
+    text-align: center;
+}
+
+.apm-header__title {
+    margin-bottom: 1rem;
+    color: var(--colorContrast);
+    text-transform:uppercase;
+}
+
+.form {
+    margin: 20px;
+}
+
+/* ------FORM FIELDS----- */
+
+.form-fields {
+    display:flex;
+    justify-content:space-between;
+}
+
+.box {
+    width: 40%;
+}
+
+.form-label {
+    display:block;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.form-value {
+    padding: 1rem;
+    outline: none;
+    border: none;
+    box-shadow: inset 4px 4px 6px var(--colorShadowDark), inset -4px -4px 6px var(--colorShadowLight);
+    color: var(--colorFont);
+}
+
+.form-value:-webkit-autofill {
+    box-shadow: inset 4px 4px 6px var(--colorShadowDark), inset -10px -10px 36px var(--colorShadowLight);
+    -webkit-text-fill-color: var(--color-font) !important;
+}
+
+.btn {
+    display: block;
+    margin: 4rem auto 0;
+    padding: 1rem 2rem;
+    border:none;
+    background-color: var(--colorContrast);
+    box-shadow: 0 0 10px #888;
+    color: var(--colorBgc);
+    cursor:pointer;
+    transition: 1s;
+}
+
+
+.btn:disabled {
+    background-color: var(--colorBgc);
+    color: var(--colorFont);
+}
+
+/* ------MODAL----- */
+
+.modal {
+    position:absolute;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--colorTransp);
+}
+
+.apm-final {
+    width:80%;
+    padding: 2rem;
+    border: 1px solid var(--colorShadowDark);
+    box-shadow: 0px 0px 20px var(--colorShadowDark);
+    background-color: var(--colorBgc);
+    text-align: center;
+}
+
+.apm-final__title {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.button-box {
+    display: flex;
+    justify-content:space-between;
+    margin: 2rem;
+}
+
+.apm-final__btn {
+    margin: 0;
+    width: 40%;
+}
+
+.not-active {
+    display:none;
 }
