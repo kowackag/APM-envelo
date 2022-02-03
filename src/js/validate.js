@@ -2,7 +2,7 @@
 export const initialValidate = (num1, num2) => {
     const regNum1 = /([0-9]{9})/;
     const regNum2 = /[0-9]{4}/;
-    return (regNum1.test(num1) && regNum2.test(num2)) ? true : false; 
+    return (regNum1.test(num1) && regNum2.test(num2) && num1.toString().length === 9 && num2.toString().length ===4) ? true : false; 
 }
 
 // ---------założenie: telefony komórkowe w Polsce------

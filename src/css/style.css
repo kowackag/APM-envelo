@@ -55,6 +55,7 @@ body {
 /* ------FORM FIELDS----- */
 
 .form-fields {
+    position: relative;   
     display:flex;
     justify-content:space-between;
 }
@@ -141,4 +142,15 @@ body {
 
 .not-active {
     display:none;
+}
+
+/* -------ERRORS------ */
+
+.errors {
+    position: absolute;
+    bottom:-2rem;
+    left:0;
+    font-size: 1rem;
+    font-style:italic;
+    color: rgb(240, 8, 8);
 }

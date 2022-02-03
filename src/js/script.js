@@ -38,6 +38,7 @@ function handleForm() {
     if (err.length === 0) {
         modalEl.classList.remove('not-active');
     } 
+    displayErr(err);
 }
 
 function setBtnActive(e) {
@@ -60,6 +61,18 @@ function finish() {
     resetValue();
     formFields.setAttribute('active', false);
 }
+
+// ----aktualnie validacja zrobiona jest tak, że zawsze zwracany jest jeden błąd i mozna było dzięki destrukturyzacji od razu wyłuskac jego treść - wykorzystuje jednak tablicę, na wypadek zmiany sposobu walidacji.
+
+function displayErr(err) {
+    err.forEach(item =>{
+        const infoEl = document.createElement('p');
+        infoEl.innerText = item;
+        infoEl.classList.add('errors')
+        formFields.appendChild(infoEl);
+    })
+}
+
 
 function resetValue() {
     phoneEl.value = '';
