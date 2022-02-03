@@ -33,7 +33,22 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
                 // określam jaki [loader]
                 // ma być wykorzystany
-            }
+            },
+            {
+                test: /\.(ttf|otf|woff|woff2)$/,
+                // dodaję rozszerzenia obrazów
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        // ustawiam nazwę pliku
+                        outputPath: 'fonts',
+                        // ustawiam nazwę katalogu, do którego
+                        // będą kopiowane font-y
+                    }
+                }
+                // tym razem tylko jeden loader
+            },
         ]
     },
     plugins: [
