@@ -20,7 +20,6 @@ function init () {
 
 function handleSubmit(e) {
     e.preventDefault();
-    console.log('handlesubmit')
     let isFormActive = formFields.getAttribute('active');
     console.log(isFormActive);
     isFormActive === 'false' ? setIsFormActive():handleForm();
