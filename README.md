@@ -1,6 +1,6 @@
 
 
-# Automated Parcel Machine (React and Hooks)
+# Automated Parcel Machine
 
 &nbsp;
 
