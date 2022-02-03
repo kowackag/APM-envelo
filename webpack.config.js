@@ -35,19 +35,10 @@ module.exports = {
                 // ma być wykorzystany
             },
             {
-                test: /\.(ttf|otf|woff|woff2)(\?\S*)?$/,
-                // dodaję rozszerzenia obrazów
+                test: /\.(woff|woff2)$/,
                 use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        // ustawiam nazwę pliku
-                        outputPath: 'fonts',
-                        // ustawiam nazwę katalogu, do którego
-                        // będą kopiowane font-y
-                    }
-                }
-                // tym razem tylko jeden loader
+                    loader: 'url-loader',
+                },
             },
         ]
     },

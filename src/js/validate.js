@@ -1,6 +1,6 @@
-import {data} from './../data/db.json';
+import * as data from './../data/db.json';
 
-const db = data;
+const {db} = data;
 
 export const initialValidate = (num1, num2) => {
     const regNum1 = /([0-9]{9})/;

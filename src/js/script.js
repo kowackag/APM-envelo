@@ -13,7 +13,7 @@ const finishBtn = document.querySelector('[name="finish"]');
 const nextBtn = document.querySelector('[name="next"]');
 const timeEl = document.querySelector('.time');
 const errorsEl = document.querySelector('.errors');
-console.log(timeEl);
+
 
 function init () {
     formEl.addEventListener('submit', handleSubmit);
@@ -98,7 +98,6 @@ const start = () => {
 }
 
 const timer = () => {
-    console.log(time)
     if (!activeTimer) {
         activeTimer = !activeTimer;
         id = setInterval(start,1000)
