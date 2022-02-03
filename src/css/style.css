@@ -187,3 +187,32 @@ body {
     font-style:italic;
     color: rgb(240, 8, 8);
 }
+
+
+@media(max-width: 530px){
+
+    body {
+        background-color: var(--colorBgc);
+    }
+
+    .container {
+        padding: 4rem;
+        min-width: auto;
+        min-height: auto;
+        box-shadow:none;
+    }
+
+    .form-fields {
+        display:block;
+    }
+
+    .box {
+        width: 100%;
+        text-align:center;
+        margin: 3rem 0;
+    }
+
+    .errors {
+        text-align: center;
+    }
+}
