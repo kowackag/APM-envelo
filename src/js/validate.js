@@ -1,3 +1,6 @@
+import {data} from './../data/db.json';
+
+const db = data;
 
 export const initialValidate = (num1, num2) => {
     const regNum1 = /([0-9]{9})/;
@@ -9,16 +12,7 @@ export const initialValidate = (num1, num2) => {
 // ---------50, 51, 53, 57, 60, 66, 69, 72, 73, 78, 79, 88
 
 export const validateData = (phone, code) => {
-    // ------ const db - tylko do CodePen ------
-    const db = [
-        {phone: 500000000, code: 5000},
-        {phone: 510000000, code: 5100},
-        {phone: 530000000, code: 5300},
-        {phone: 570000000, code: 5711},
-        {phone: 600000000, code: 6000},
-        {phone: 660000000, code: 6600},
-    ]
-    
+          
     const validatePhone = (num1) => {
     const regNum = /50[0-9]{7}|51[0-9]{7}|52[0-9]{7}|53[0-9]{7}|60[0-9]{7}|66[0-9]{7}|69[0-9]{7}|72[0-9]{7}|73[0-9]{7}|78[0-9]{7}|79[0-9]{7}|88[0-9]{7}/;
     return regNum.test(num1) ? true: false;

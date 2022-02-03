@@ -35,7 +35,7 @@ module.exports = {
                 // ma być wykorzystany
             },
             {
-                test: /\.(ttf|otf|woff|woff2)$/,
+                test: /\.(ttf|otf|woff|woff2)(\?\S*)?$/,
                 // dodaję rozszerzenia obrazów
                 use: {
                     loader: 'file-loader',

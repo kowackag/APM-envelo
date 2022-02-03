@@ -11,6 +11,9 @@ const codeEl = document.querySelector('[name="code"]');
 const modalEl = document.querySelector('.modal');
 const finishBtn = document.querySelector('[name="finish"]');
 const nextBtn = document.querySelector('[name="next"]');
+const timeEl = document.querySelector('.time');
+const errorsEl = document.querySelector('.errors');
+console.log(timeEl);
 
 function init () {
     formEl.addEventListener('submit', handleSubmit);
@@ -22,10 +25,11 @@ function init () {
 function handleSubmit(e) {
     e.preventDefault();
     let isFormActive = formFields.getAttribute('active');
-    isFormActive === 'false' ? setIsFormActive():handleForm();
+    isFormActive === 'false' ? startAPM() : handleForm();
 }
 
-function setIsFormActive () {
+function startAPM () {
+    timer();
     formFields.classList.remove('not-active');
     formFields.setAttribute('active', true);
     formBtnEl.setAttribute('disabled','');
@@ -37,6 +41,7 @@ function handleForm() {
     const err = validateData(phoneNum, codeNum);
     if (err.length === 0) {
         modalEl.classList.remove('not-active');
+        timer();
     } 
     displayErr(err);
 }
@@ -52,7 +57,9 @@ function setBtnActive(e) {
 
 function getNextPack() {
     modalEl.classList.add('not-active');
+    formBtnEl.setAttribute('disabled','');
     resetValue();
+    timer();
 }
 
 function finish() {
@@ -65,17 +72,39 @@ function finish() {
 // ----aktualnie validacja zrobiona jest tak, że zawsze zwracany jest jeden błąd i mozna było dzięki destrukturyzacji od razu wyłuskac jego treść - wykorzystuje jednak tablicę, na wypadek zmiany sposobu walidacji.
 
 function displayErr(err) {
+    errorsEl.innerHTML ='';
     err.forEach(item =>{
-        const infoEl = document.createElement('p');
-        infoEl.innerText = item;
-        infoEl.classList.add('errors')
-        formFields.appendChild(infoEl);
+        const errInfo = document.createElement('p');
+        errInfo.innerText = item;
+        errorsEl.appendChild(errInfo);
     })
 }
-
+ 
+// -----------POMOCNICZE--------------
 
 function resetValue() {
     phoneEl.value = '';
     codeEl.value='';
+    errorsEl.innerHTML ='';
+    time=0;
+}
+
+let time = 0;
+let id;
+let activeTimer = false;
+const start = () => {
+    time++;
+    timeEl.innerText = time;
+}
+
+const timer = () => {
+    console.log(time)
+    if (!activeTimer) {
+        activeTimer = !activeTimer;
+        id = setInterval(start,1000)
+    } else {
+        activeTimer = !activeTimer;
+        clearInterval(id)
+    } 
 }
 
