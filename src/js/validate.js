@@ -3,6 +3,12 @@ import * as data from './../data/db.json';
 const {db} = data;
 
 export const initialValidate = (num1, num2) => {
+    if (isNaN(num1)) {
+        throw new Error ('Param num1 is not a number');
+    }
+    if (isNaN(num2)) {
+        throw new Error('Param num2 is not a number');
+    }
     const regNum1 = /([0-9]{9})/;
     const regNum2 = /[0-9]{4}/;
     return (regNum1.test(num1) && regNum2.test(num2) && num1.toString().length === 9 && num2.toString().length ===4) ? true : false; 
@@ -12,6 +18,12 @@ export const initialValidate = (num1, num2) => {
 // ---------50, 51, 53, 57, 60, 66, 69, 72, 73, 78, 79, 88
 
 export const validateData = (phone, code) => {
+    if(isNaN(phone)) {
+        throw new Error ('Param phone is not a number');
+    }
+    if(isNaN(code)) {
+        throw new Error ('Param code is not a number');
+    }
           
     const validatePhone = (num1) => {
     const regNum = /50[0-9]{7}|51[0-9]{7}|52[0-9]{7}|53[0-9]{7}|60[0-9]{7}|66[0-9]{7}|69[0-9]{7}|72[0-9]{7}|73[0-9]{7}|78[0-9]{7}|79[0-9]{7}|88[0-9]{7}/;

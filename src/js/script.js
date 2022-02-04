@@ -3,23 +3,30 @@ import {initialValidate, validateData} from './validate';
 
 document.addEventListener('DOMContentLoaded', init);
 
-const formEl = document.querySelector('.form');
 const formFields = document.querySelector('.form-fields');
 const formBtnEl = document.querySelector('[name="get-pack"]');
 const phoneEl = document.querySelector('[name="phone"]');
 const codeEl = document.querySelector('[name="code"]');
-const modalEl = document.querySelector('.modal');
-const finishBtn = document.querySelector('[name="finish"]');
-const nextBtn = document.querySelector('[name="next"]');
+const modalEl = document.querySelector('.modal');       
 const timeEl = document.querySelector('.time');
 const errorsEl = document.querySelector('.errors');
 
 
 function init () {
-    formEl.addEventListener('submit', handleSubmit);
-    formEl.addEventListener('input', setBtnActive);
-    finishBtn.addEventListener('click', finish);
-    nextBtn.addEventListener('click', getNextPack);
+    try {
+        const formEl = document.querySelector('.form');
+        formEl.addEventListener('submit', handleSubmit);
+        formEl.addEventListener('input', setBtnActive);
+        const finishBtn = document.querySelector('[name="finish"]');
+        finishBtn.addEventListener('click', finish);
+        const nextBtn = document.querySelector('[name="next"]');
+        nextBtn.addEventListener('click', getNextPack);
+    }
+    catch(e) {
+        console.log('Szczegóły błędu:');
+        console.log('Nazwa: ', e.name);
+        console.log('Wiadomość: ', e.message);
+    }
 }
 
 function handleSubmit(e) {
@@ -51,7 +58,7 @@ function setBtnActive(e) {
     const phoneNum = Number(phoneEl.value.replace(/\s/g, ''));
     const codeNum = Number(codeEl.value.replace(/\s/g, ''));
     if (initialValidate(phoneNum, codeNum)) {
-        formBtnEl.removeAttribute('disabled');
+        formBtnEl.removeAttribute('disabled'); 
     } else {formBtnEl.setAttribute('disabled','');}
 }
 
@@ -72,6 +79,9 @@ function finish() {
 // ----aktualnie validacja zrobiona jest tak, że zawsze zwracany jest jeden błąd i mozna było dzięki destrukturyzacji od razu wyłuskac jego treść - wykorzystuje jednak tablicę, na wypadek zmiany sposobu walidacji.
 
 function displayErr(err) {
+    if(!Array.isArray(err)) {
+        throw new TypeError('Param is not an array');
+    }
     errorsEl.innerHTML ='';
     err.forEach(item =>{
         const errInfo = document.createElement('p');
